@@ -5,9 +5,10 @@
 <%= observe_field :issue_tracker_id, :url => { :action => :new, :project_id => @project, :id => @issue },
                                      :update => :attributes,
                                      :with => "Form.serialize('issue-form')" %>
-
 <p><%= f.text_field :subject, :size => 80, :required => true %></p>
-                                     
+
+<%= render :partial => 'issues/form_custom_fields' %>    
+                                 
 <% if User.current.allowed_to?(:manage_subtasks, @project) %>
 <p id="parent_issue"><%= f.text_field :parent_issue_id, :size => 10 %></p>
 <div id="parent_issue_candidates" class="autocomplete"></div>
@@ -25,9 +26,6 @@
 	<%= render :partial => 'issues/attributes' %>
 </div>
 
-<% if @issue.new_record? %>
-<p id="attachments_form"><%= label_tag('attachments[1][file]', l(:label_attachment_plural))%><%= render :partial => 'attachments/form' %></p>
-<% end %>
 
 <% if @issue.new_record? && User.current.allowed_to?(:add_issue_watchers, @project) -%>
 <p id="watchers_form"><label><%= l(:label_issue_watchers) %></label>
