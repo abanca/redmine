@@ -23,6 +23,7 @@ class JournalsController < ApplicationController
   accept_key_auth :index
 
   helper :issues
+  helper :custom_fields
   helper :queries
   include QueriesHelper
   helper :sort
@@ -74,6 +75,14 @@ class JournalsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to :controller => 'issues', :action => 'show', :id => @journal.journalized_id }
         format.js { render :action => 'update' }
+      end
+    else
+      respond_to do |format|
+        format.html {
+          # TODO: implement non-JS journal update
+          render :nothing => true 
+        }
+        format.js
       end
     end
   end
