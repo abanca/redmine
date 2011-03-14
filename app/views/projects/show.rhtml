@@ -50,9 +50,7 @@
   <%= call_hook(:view_projects_show_left, :project => @project) %>
 </div>
 
-<div class="splitcontentright">
-  <%= render :partial => 'members_box' %>
-    
+<div class="splitcontentright">    
   <% if @news.any? && authorize_for('news', 'index') %>
   <div class="news box">
     <h3><%=l(:label_news_latest)%></h3>  
