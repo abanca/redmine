@@ -31,7 +31,7 @@
 
 <div class="splitcontentright">
 <p><%= f.text_field :start_date, :size => 10, :disabled => !@issue.leaf? %><%= calendar_for('issue_start_date') if @issue.leaf? %></p>
-<p><%= f.text_field :due_date, :size => 10, :disabled => !@issue.leaf? %><%= calendar_for('issue_due_date') if @issue.leaf? %></p>
+<p><!-- <%= f.text_field :due_date, :size => 10, :disabled => !@issue.leaf? %><%= calendar_for('issue_due_date') if @issue.leaf? %> --></p>
 </div>
 
 <div style="clear:both;"> </div>
